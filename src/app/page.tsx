@@ -28,9 +28,15 @@ export default function Home() {
           className="w-full items-center flex flex-col"
         >
           <TabsList>
-            <TabsTrigger value="experiences">Experiences</TabsTrigger>
-            <TabsTrigger value="blogs">Blogs</TabsTrigger>
-            <TabsTrigger value="contacts">Contacts</TabsTrigger>
+            <TabsTrigger value="experiences" aria-label="Experiences">
+              Experiences
+            </TabsTrigger>
+            <TabsTrigger value="blogs" aria-label="Blogs">
+              Blogs
+            </TabsTrigger>
+            <TabsTrigger value="contacts" aria-label="Contacts">
+              Contacts
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="experiences" className="mt-8">
             <div className="flex flex-col gap-4">
@@ -76,6 +82,7 @@ export default function Home() {
                   <Link
                     href={blog.url}
                     className="flex gap-2 justify-between flex-row"
+                    aria-label={blog.title}
                   >
                     <span>{blog.title}</span>
                     <span className="text-muted-foreground text-sm">

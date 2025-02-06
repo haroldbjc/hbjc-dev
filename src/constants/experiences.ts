@@ -11,6 +11,7 @@ export default [
     ],
     techStack: [
       "NextJS",
+      "React",
       "ChakraUI",
       "TanStack Query",
       "Axios",
@@ -35,6 +36,7 @@ export default [
     ],
     techStack: [
       "NextJS",
+      "React",
       "TypeScript",
       "NextUI",
       "TanStack Query",
