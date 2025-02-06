@@ -1,99 +1,110 @@
-import { ModeToggle } from "@/components/theme-toggle";
-import { Badge } from "@/components/ui/badge";
-import { GithubIcon, GlobeIcon } from "lucide-react";
-import experiences from "@/constants/experiences";
-import Image from "next/image";
 import Link from "next/link";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { ModeToggle } from "@/components/theme-toggle";
+import ElysiaAvatar from "@/components/elysia-avatar";
+import experiences from "@/constants/experiences";
+import blogs from "@/constants/blogs";
 
 export default function Home() {
   return (
-    <div className="min-h-screen mx-auto p-8 sm:p-20 max-w-3xl border-2 border-gray-200">
+    <div className="min-h-screen mx-auto p-8 sm:p-20 max-w-3xl">
       <main className="flex flex-col gap-8 font-mono">
         <div className="flex flex-col items-center sm:items-stretch sm:flex-row gap-4 ">
-          <Image
-            src="/assets/pictures/elysia.png"
-            alt="Elysia"
-            width={150}
-            height={150}
-            className="rounded-3xl bg-gray-100 dark:bg-gray-900 p-4"
-          />
+          <ElysiaAvatar />
           <div className="flex flex-col text-center sm:text-left items-center sm:items-start">
             <h2>Harold Bong</h2>
-            <p>Software Engineer @ Evalink</p>
-
-            <div className="flex flex-row gap-2 mt-8 sm:mt-auto">
-              <Link
-                href="https://github.com/haroldbjc"
-                className="w-fit"
-                aria-label="Github"
-              >
-                <Badge variant="outline">
-                  <GithubIcon size={16} />
-                  {/* <Image
-                    src="/assets/icons/github.svg"
-                    alt="github"
-                    width={16}
-                    height={16}
-                    className="bg-white rounded-full"
-                  /> */}
-                  <span className="ml-1">haroldbjc</span>
-                </Badge>
-              </Link>
-
-              <Link
-                href="https://hbjc.dev"
-                className="w-fit"
-                aria-label="Website"
-              >
-                <Badge variant="outline">
-                  <GlobeIcon size={16} />
-                  <span className="ml-1">hbjc.dev</span>
-                </Badge>
-              </Link>
-            </div>
+            <p>frontend guy</p>
           </div>
           <div className="sm:ml-auto">
             <ModeToggle />
           </div>
         </div>
 
-        {/* <FlowerIcon /> */}
-        <div className="flex flex-col gap-4 ">
-          <h3>Experiences</h3>
-          {experiences.map((experience, index) => (
-            <div key={experience.title}>
-              <h5>{experience.title}</h5>
-              {experience.currentJob ? (
-                <p className="text-muted-foreground">
-                  since {experience.startDate}
-                </p>
-              ) : (
-                <p className="text-muted-foreground">
-                  {experience.startDate} to {experience.endDate}
-                </p>
-              )}
-              <ul>
-                {experience.description.map((description) => (
-                  <li key={description}>- {description}</li>
-                ))}
-              </ul>
+        <Tabs
+          defaultValue="experiences"
+          className="w-full items-center flex flex-col"
+        >
+          <TabsList>
+            <TabsTrigger value="experiences">Experiences</TabsTrigger>
+            <TabsTrigger value="blogs">Blogs</TabsTrigger>
+            <TabsTrigger value="contacts">Contacts</TabsTrigger>
+          </TabsList>
+          <TabsContent value="experiences" className="mt-8">
+            <div className="flex flex-col gap-4">
+              {experiences.map((experience, index) => (
+                <div key={experience.title}>
+                  <h5>{experience.title}</h5>
+                  {experience.currentJob ? (
+                    <p className="text-muted-foreground">
+                      since {experience.startDate}
+                    </p>
+                  ) : (
+                    <p className="text-muted-foreground">
+                      {experience.startDate} to {experience.endDate}
+                    </p>
+                  )}
+                  <ul>
+                    {experience.description.map((description) => (
+                      <li key={description}>- {description}</li>
+                    ))}
+                  </ul>
 
-              <div className="flex flex-row gap-2 mt-8 flex-wrap">
-                Tech Stack:
-                {experience.techStack.map((tech) => (
-                  <Badge key={tech} variant="secondary">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
+                  <div className="flex flex-row gap-2 mt-8 flex-wrap">
+                    Tech Stack:
+                    {experience.techStack.map((tech) => (
+                      <Badge key={tech} variant="secondary">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
 
-              {experiences.length - 1 !== index && (
-                <Separator className="mt-8" />
-              )}
+                  {experiences.length - 1 !== index && (
+                    <Separator className="mt-8" />
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </TabsContent>
+
+          <TabsContent value="blogs" className="mt-8 w-full items-start flex">
+            <div className="flex flex-col gap-4 w-full">
+              {blogs.map((blog, index) => (
+                <div key={blog.title}>
+                  <Link
+                    href={blog.url}
+                    className="flex gap-2 justify-between flex-row"
+                  >
+                    <span>{blog.title}</span>
+                    <span className="text-muted-foreground text-sm">
+                      {blog.date}
+                    </span>
+                  </Link>
+                  {blogs.length - 1 !== index && <Separator className="mt-4" />}
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="contacts" className="mt-2">
+            <div className="flex flex-col gap-4 text-center">
+              <div>
+                <h5>Email</h5>
+                <p>harold.bong@gmail.com</p>
+              </div>
+              <div>
+                <h5>Github</h5>
+                <p>haroldbjc</p>
+              </div>
+              <div>
+                <h5>LinkedIn</h5>
+                <p>haroldbjc</p>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );
