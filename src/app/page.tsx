@@ -103,7 +103,7 @@ export default function Home() {
               </div>
               <div>
                 <h5>Github</h5>
-                <p>haroldbjc</p>
+                <p>@haroldbjc</p>
               </div>
               <div>
                 <h5>LinkedIn</h5>
