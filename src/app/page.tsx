@@ -11,7 +11,7 @@ import blogs from "@/constants/blogs";
 export default function Home() {
   return (
     <div className="min-h-screen mx-auto p-8 sm:p-20 max-w-3xl">
-      <main className="flex flex-col gap-8 font-mono">
+      <main className="flex flex-col gap-8">
         <div className="flex flex-col items-center sm:items-stretch sm:flex-row gap-4 ">
           <ElysiaAvatar />
           <div className="flex flex-col text-center sm:text-left items-center sm:items-start">
@@ -44,11 +44,11 @@ export default function Home() {
                 <div key={experience.title}>
                   <h5>{experience.title}</h5>
                   {experience.currentJob ? (
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                       since {experience.startDate}
                     </p>
                   ) : (
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                       {experience.startDate} to {experience.endDate}
                     </p>
                   )}
@@ -104,10 +104,6 @@ export default function Home() {
               <div>
                 <h5>Github</h5>
                 <p>@haroldbjc</p>
-              </div>
-              <div>
-                <h5>LinkedIn</h5>
-                <p>haroldbjc</p>
               </div>
             </div>
           </TabsContent>
