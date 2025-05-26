@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ModeToggle } from "@/components/theme-toggle";
 import ElysiaAvatar from "@/components/elysia-avatar";
 import experiences from "@/constants/experiences";
-import blogs from "@/constants/blogs";
+// import blogs from "@/constants/blogs";
 
 export default function Home() {
   return (
@@ -31,9 +31,9 @@ export default function Home() {
             <TabsTrigger value="experiences" aria-label="Experiences">
               Experiences
             </TabsTrigger>
-            <TabsTrigger value="blogs" aria-label="Blogs">
+            {/* <TabsTrigger value="blogs" aria-label="Blogs">
               Blogs
-            </TabsTrigger>
+            </TabsTrigger> */}
             <TabsTrigger value="contacts" aria-label="Contacts">
               Contacts
             </TabsTrigger>
@@ -75,12 +75,12 @@ export default function Home() {
             </div>
           </TabsContent>
 
-          <TabsContent value="blogs" className="mt-8 w-full items-start flex">
+          {/* <TabsContent value="blogs" className="mt-8 w-full items-start flex">
             <div className="flex flex-col gap-4 w-full">
               {blogs.map((blog, index) => (
                 <div key={blog.title}>
                   <Link
-                    href={blog.url}
+                    href={"notyet"}
                     className="flex gap-2 justify-between flex-row"
                     aria-label={blog.title}
                   >
@@ -93,17 +93,23 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </TabsContent>
+          </TabsContent> */}
 
           <TabsContent value="contacts" className="mt-2">
             <div className="flex flex-col gap-4 text-center">
               <div>
                 <h5>Email</h5>
-                <p>harold.bong@gmail.com</p>
+                <p>harold.bjc@gmail.com</p>
               </div>
               <div>
                 <h5>Github</h5>
-                <p>@haroldbjc</p>
+                <Link
+                  href="https://github.com/haroldbjc"
+                  aria-label="Github"
+                  className="underline"
+                >
+                  @haroldbjc
+                </Link>
               </div>
             </div>
           </TabsContent>
